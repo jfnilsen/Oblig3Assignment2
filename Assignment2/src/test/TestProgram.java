@@ -11,7 +11,6 @@ public class TestProgram {
 		String userInput = scanner.nextLine();
 		
 		TextReverser.reverse(userInput);
-			
 	}
 
 }
