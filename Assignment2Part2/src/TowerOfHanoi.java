@@ -12,14 +12,17 @@ public class TowerOfHanoi {
 		
 		System.out.println("Trekkene er: ");
 		moveDisk(n, 'A', 'B', 'C');
-		System.out.println("Totalt antall trekk: "+ numberOfMoves);
-		System.out.println("Antall rekursive kall: " + (numberOfRecursiveCalls));
 	}
 
 	public static void moveDisk(int n, char fromTower, char toTower, char auxTower) {
 		numberOfMoves++;
 		if(n == 1){
 			System.out.println("Beveg disk " + n + " fra " + fromTower + " til " + toTower);
+			System.out.println("Totalt antall trekk: "+ numberOfMoves);
+			System.out.println("Antall rekursive kall: " + (numberOfRecursiveCalls));
+			numberOfMoves = 0;
+			numberOfRecursiveCalls = 0;
+			
 		}else{
 			numberOfRecursiveCalls++;
 			moveDisk(n-1, fromTower, auxTower, toTower);
