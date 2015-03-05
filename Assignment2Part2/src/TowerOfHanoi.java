@@ -11,25 +11,28 @@ public class TowerOfHanoi {
 		int n = input.nextInt();
 		
 		System.out.println("Trekkene er: ");
-		moveDisk(n, 'A', 'B', 'C');
+		moveDisk(n, 'A', 'B', 'C', n);
 	}
 
-	public static void moveDisk(int n, char fromTower, char toTower, char auxTower) {
-		numberOfMoves++;
+	public static void moveDisk(int n, char fromTower, char toTower, char auxTower, int totalDisks) {
+		++numberOfMoves;
 		if(n == 1){
 			System.out.println("Beveg disk " + n + " fra " + fromTower + " til " + toTower);
-			System.out.println("Totalt antall trekk: "+ numberOfMoves);
-			System.out.println("Antall rekursive kall: " + (numberOfRecursiveCalls));
-			numberOfMoves = 0;
-			numberOfRecursiveCalls = 0;
-			
+			if(numberOfMoves == (Math.pow(2,totalDisks)-1)){
+				System.out.println("Totalt antall trekk: "+ numberOfMoves);
+				System.out.println("Antall rekursive kall: " + (numberOfRecursiveCalls));
+				numberOfMoves = 0;					
+				numberOfRecursiveCalls = 0;
+			}
 		}else{
 			numberOfRecursiveCalls++;
-			moveDisk(n-1, fromTower, auxTower, toTower);
+			moveDisk(n-1, fromTower, auxTower, toTower, totalDisks);
 			System.out.println("Beveg disk " + n + " fra " + fromTower + " til " + toTower);
 			numberOfRecursiveCalls++;
-			moveDisk(n-1, auxTower, toTower, fromTower);
+			moveDisk(n-1, auxTower, toTower, fromTower, totalDisks);
+			
 		}
-		
+	
+
 	}
 }
