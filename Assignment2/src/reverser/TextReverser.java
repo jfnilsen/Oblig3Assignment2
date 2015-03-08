@@ -10,7 +10,7 @@ public class TextReverser {
 		
 	}
 	public static void reverse(String text, int last){
-		if(last > 1){
+		if(last >= 1){
 			System.out.print(text.charAt(last-1));
 			numberOfCharacters++;
 			reverse(text, last-1);
